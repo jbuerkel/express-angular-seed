@@ -1,0 +1,14 @@
+{
+  "build": "./build",
+  "buildimg": "./build/img",
+  "buildviews": "./build/views",
+  "css": "./client/assets/css/*",
+  "clientjs": "./client/app/**/*.js",
+  "clientjsmodule": "./client/app/**/*.module.js",
+  "htmlindex": "./client/index.html",
+  "htmlviews": "./client/app/**/*.html",
+  "img": "./client/assets/img/*",
+  "packagejson": "./package.json",
+  "serverjs": "./server/**/!(*.json)",
+  "serverscript": "./server/bin/www"
+}

@@ -1,0 +1,48 @@
+{
+  "name": "express-angular-seed",
+  "version": "0.1.0",
+  "description": "A slim sample web app powered by Express and Angular",
+  "author": "Jonas <buerkelj@gmail.com>",
+  "scripts": {
+    "start": "node ./server/bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jbuerkel/express-angular-seed"
+  },
+  "bugs": {
+    "url": "https://github.com/jbuerkel/express-angular-seed/issues"
+  },
+  "keywords": [
+    "express",
+    "angular",
+    "seed"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "helmet": "^1.1.0",
+    "morgan": "~1.6.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-changed": "^1.3.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-flatten": "^0.2.0",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-nsp": "^2.3.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^1.5.1",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0"
+  }
+}
