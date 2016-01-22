@@ -1,14 +1,20 @@
 # Express-Angular-Seed
+[![npm](https://img.shields.io/npm/v/express-angular-seed.svg)](https://www.npmjs.com/package/express-angular-seed)
+[![Dependencies](https://img.shields.io/david/jbuerkel/express-angular-seed.svg)](https://david-dm.org/jbuerkel/express-angular-seed#info=Dependencies)
+[![DevDependencies](https://img.shields.io/david/dev/jbuerkel/express-angular-seed.svg)](https://david-dm.org/jbuerkel/express-angular-seed#info=devDependencies)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 This project provides a simple web app which is based on [Express](http://expressjs.com/) and [AngularJS](https://angularjs.org/). Both the frontend and the backend have been kept as slim as possible to retain a high level of flexibility. The goal of this project is not to provide a fully featured application but an easy-to-use structure to improve productivity without having to adapt hundreds of lines before you can start.
 
 ## Getting Started
 
-Starting a new project with this seed is easy just get it via [npm](https://www.npmjs.com/):
+Starting a new project with this seed is easy just clone this repository and run `npm install`. Or you can get it directly via [npm](https://www.npmjs.com/):
 
 ```sh
 npm install express-angular-seed
 ```
+
+However this will install the package into your `node_modules/` folder and not into your project directory!
 
 After installing the package build the application with `gulp`. This command will process your source files, launch your web server and open the sample app in your default web browser. Additionally it will watch for file changes and act accordingly (for a more detailed description please see the [Gulp](https://github.com/jbuerkel/express-angular-seed#gulp) section below).
 
