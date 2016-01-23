@@ -3,7 +3,7 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var path = require('path');
-var paths = require('./gulpfile.paths.json');
+var paths = require('./paths.config.json');
 
 var autoprefixer = require('gulp-autoprefixer');
 var changed = require('gulp-changed');
