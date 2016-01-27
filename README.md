@@ -4,11 +4,11 @@
 [![devDependencies](https://img.shields.io/david/dev/jbuerkel/express-angular-seed.svg)](https://david-dm.org/jbuerkel/express-angular-seed#info=devDependencies&view=table)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-This project provides a simple web app which is based on [Express](http://expressjs.com/) and [AngularJS](https://angularjs.org/). Both the frontend and the backend have been kept as slim as possible to retain a high level of flexibility. The goal of this project is not to provide a fully featured application but an easy-to-use structure to improve productivity without having to adapt hundreds of lines before you can start.
+This project provides a simple web app which is based on [Express](http://expressjs.com/) and [AngularJS](https://angularjs.org/). Both the frontend and the backend have been kept as slim as possible to retain a high level of flexibility. The goal of this project is not to provide a fully featured application but an easy-to-use structure to improve productivity without the effort of adapting an already existing codebase.
 
 ## Getting Started
 
-Starting a new project with this seed is easy just clone this repository and run `npm install`. Or you can get it directly via [npm](https://www.npmjs.com/):
+Starting a new project with this seed is easy just clone the repository and run `npm install`. Or you can get it directly via [npm](https://www.npmjs.com/):
 
 ```sh
 npm install express-angular-seed

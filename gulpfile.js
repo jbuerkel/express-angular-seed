@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var path = require('path');
 var paths = require('./paths.config.json');
+var Server = require('karma').Server;
 
 var autoprefixer = require('gulp-autoprefixer');
 var changed = require('gulp-changed');
@@ -81,7 +82,7 @@ gulp.task('minify-img', function() {
 });
 
 gulp.task('minify-js', ['lint-client'], function() {
-    return gulp.src([paths.clientjsmodule, paths.clientjs])
+    return gulp.src([paths.clientjsmodule, paths.clientjs, paths.clientjsnotest])
         .pipe(sourcemaps.init())
             .pipe(concat('app.min.js'))
             .pipe(ngAnnotate())
@@ -91,29 +92,32 @@ gulp.task('minify-js', ['lint-client'], function() {
         .pipe(gulp.dest(paths.build));
 });
 
-gulp.task('nodemon', ['lint-server'], function() {
+gulp.task('nodemon', ['lint-server', 'minify-css', 'minify-html-index', 'minify-html-views', 'minify-img', 'minify-js', 'nsp'], function() {
     return nodemon({
         script: paths.serverscript,
-        watch: paths.serverjs.substring(2), // normal path does not work
+        watch: path.join(__dirname, paths.serverjs),
         env: { 'NODE_ENV': 'development' },
         tasks: ['lint-server']
     }).on('restart', browserSync.reload);
 });
 
-gulp.task('nsp', function(cb) {
-    return nsp({
+gulp.task('nsp', function(done) {
+    nsp({
         package: path.join(__dirname, paths.packagejson)
-    }, cb);
+    }, done);
 });
 
-gulp.task('default', ['minify-css', 'minify-html-index', 'minify-html-views', 'minify-img', 'minify-js', 'nsp'], function() {
+gulp.task('test', function(done) {
+    new Server({
+        configFile: path.join(__dirname, paths.karmaconf)
+    }, done).start();
+});
+
+gulp.task('default', ['browser-sync'], function() {
     gulp.watch(paths.css, ['minify-css']);
     gulp.watch(paths.htmlindex, ['minify-html-index']);
     gulp.watch(paths.htmlviews, ['minify-html-views']);
     gulp.watch(paths.img, ['minify-img']);
     gulp.watch(paths.clientjs, ['minify-js']);
     gulp.watch(paths.packagejson, ['nsp']);
-
-    // deprecated, change with gulp 4.x.x
-    gulp.run('browser-sync');
 });

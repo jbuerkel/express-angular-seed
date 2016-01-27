@@ -5,9 +5,11 @@
   "css": "./client/assets/css/*",
   "clientjs": "./client/app/**/*.js",
   "clientjsmodule": "./client/app/**/*.module.js",
+  "clientjsnotest": "!./client/app/**/*.spec.js",
   "htmlindex": "./client/index.html",
   "htmlviews": "./client/app/**/*.html",
   "img": "./client/assets/img/*",
+  "karmaconf": "./karma.conf.js",
   "packagejson": "./package.json",
   "serverjs": "./server/**/!(*.json)",
   "serverscript": "./server/bin/www"
