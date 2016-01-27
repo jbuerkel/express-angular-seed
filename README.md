@@ -20,17 +20,15 @@ After installing the package build the application with `gulp`. This command wil
 
 Happy coding!
 
-## Express
+## Structure
 
-The backend of this seed is based on the [express-generator](https://www.npmjs.com/package/express-generator). As we would like to do client-side routing the core module simply passes any routes which are not part of the API to our client. Security is also important these days which is why [Helmet](https://www.npmjs.com/package/helmet) is included exemplarily. Of course this *does not make this application secure* but it can be seen as a starting point.
+The backend of this seed is based on the [express-generator](https://www.npmjs.com/package/express-generator). Its core router simply passes any routes which are not part of the API to the client. As security is also important the middleware [Helmet](https://www.npmjs.com/package/helmet) is included exemplarily. Of course this *does not make this application secure* but it can be seen as a starting point.
 
 Take a look at the articles [here](http://scottksmith.com/blog/2014/09/21/protect-your-node-apps-noggin-with-helmet/) and [here](http://scottksmith.com/blog/2014/09/04/simple-steps-to-secure-your-express-node-application/) to get a better idea of how [Helmet](https://www.npmjs.com/package/helmet) works and how you can easily improve the security of your [Express](http://expressjs.com/) applications. A HTTPS setup for this project might be included in the future.
 
-## Angular
+The frontend of this seed is primarily based on this [style guide](https://github.com/johnpapa/angular-styleguide) which you should absolutely read if you are planning to write a lot of [AngularJS](https://angularjs.org/) code. For client-side routing this project uses [UI-Router](https://www.npmjs.com/package/angular-ui-router). [Bootstrap](https://getbootstrap.com/) together with [UI Bootstrap](https://angular-ui.github.io/bootstrap/) will make this app (more or less) beautiful without the necessity to include [jQuery](https://jquery.com/). However these are only recommendations feel free to include any alternatives you prefer.
 
-The frontend of this seed is primarily based on this [style guide](https://github.com/johnpapa/angular-styleguide) which you should absolutely read if you are planning to write a lot of [AngularJS](https://angularjs.org/) code.
-
-For client-side routing this project uses [UI-Router](https://www.npmjs.com/package/angular-ui-router) which offers a lot of additional functionality in comparison to Angular's default router. [Bootstrap](https://getbootstrap.com/) together with [UI Bootstrap](https://angular-ui.github.io/bootstrap/) will make this app (more or less) beautiful without the necessity to somehow mash [jQuery](https://jquery.com/) into it. However these are only recommendations feel free to include any alternatives you prefer.
+If you would like to write tests for your client you can simply use the built-in [Mocha](https://mochajs.org/)/[Sinon-Chai](http://chaijs.com/plugins/sinon-chai) setup. Take a look at the sample test provided and make sure to name your test files correctly (`*.spec.js`). You can run your tests with `npm test` or `gulp test`.
 
 ## Gulp
 
