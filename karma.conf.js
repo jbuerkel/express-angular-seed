@@ -1,6 +1,6 @@
 'use strict';
 
-var paths = require('./paths.config.json');
+var paths = require('./paths.conf');
 
 module.exports = function(config) {
     config.set({

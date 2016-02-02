@@ -3,7 +3,7 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var path = require('path');
-var paths = require('./paths.config.json');
+var paths = require('./paths.conf');
 var Server = require('karma').Server;
 
 var autoprefixer = require('gulp-autoprefixer');
@@ -37,12 +37,12 @@ function minifyHTML(src, dest) {
 }
 
 gulp.task('browser-sync', ['nodemon'], function() {
-    var port = process.env.PORT || 3000;
+    var port = process.env.PORT || '3000';
     return browserSync.init({
         ui: false,
         files: paths.build,
         proxy: 'localhost:' + port,
-        port: port + 1,
+        port: '4000',
         online: false,
         notify: false,
         reloadDelay: 500,
