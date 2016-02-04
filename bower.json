@@ -4,6 +4,6 @@
     "angular": "^1.4.9",
     "angular-bootstrap": "^1.1.0",
     "angular-mocks": "^1.4.9",
-    "angular-ui-router": "^0.2.15"
+    "angular-ui-router": "^0.2.17"
   }
 }
