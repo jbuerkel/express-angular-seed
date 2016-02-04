@@ -2,7 +2,10 @@
   "name": "express-angular-seed",
   "devDependencies": {
     "angular": "^1.4.9",
-    "angular-bootstrap": "^1.1.0",
+    "angular-animate": "^1.4.9",
+    "angular-aria": "^1.4.9",
+    "angular-material": "^1.0.4",
+    "angular-messages": "^1.4.9",
     "angular-mocks": "^1.4.9",
     "angular-ui-router": "^0.2.17"
   }

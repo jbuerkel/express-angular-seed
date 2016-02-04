@@ -12,6 +12,6 @@
     function CoreController() {
         var vm = this;
 
-        vm.hello = 'World';
+        vm.title = 'express-angular-seed';
     }
 })();

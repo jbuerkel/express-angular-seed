@@ -12,9 +12,9 @@
             });
         });
 
-        it('should provide a property containing the string "World"', function() {
-            expect(controller.hello).to.exist;
-            expect(controller.hello).to.equal('World');
+        it('should provide a title property containing the string "express-angular-seed"', function() {
+            expect(controller.title).to.exist;
+            expect(controller.title).to.equal('express-angular-seed');
         });
     });
 })();
