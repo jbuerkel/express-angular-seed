@@ -88,7 +88,7 @@ gulp.task('minify-js', ['lint-client'], function() {
             .pipe(ngAnnotate())
             .pipe(stripDebug())
             .pipe(uglify())
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.build));
 });
 
