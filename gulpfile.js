@@ -24,7 +24,7 @@ function minifyHTML(src, dest) {
 
 gulp.task('browser-sync', ['nodemon'], function() {
     var port = process.env.PORT || '3000';
-    return browserSync.init({
+    browserSync.init({
         ui: false,
         files: paths.build,
         proxy: 'localhost:' + port,
@@ -79,7 +79,7 @@ gulp.task('minify-js', ['lint-client'], function() {
 });
 
 gulp.task('nodemon', ['lint-server', 'minify-css', 'minify-html-index', 'minify-html-views', 'minify-img', 'minify-js', 'nsp'], function() {
-    return $.nodemon({
+    $.nodemon({
         script: paths.serverscript,
         watch: path.join(__dirname, paths.serverjs),
         env: { 'NODE_ENV': 'development' },

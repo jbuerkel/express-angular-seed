@@ -30,7 +30,7 @@ Note that this command might break your application depending on the correspondi
 
 The backend of this seed is based on the [express-generator](https://www.npmjs.com/package/express-generator). Its core router simply passes any routes which are not part of the API to the client. As security is also important the middleware [helmet](https://www.npmjs.com/package/helmet) is included exemplarily. Of course this *does not make this application secure* but it can be seen as a starting point.
 
-Take a look at the articles [here](http://scottksmith.com/blog/2014/09/21/protect-your-node-apps-noggin-with-helmet/) and [here](http://scottksmith.com/blog/2014/09/04/simple-steps-to-secure-your-express-node-application/) to get a better idea of how [helmet](https://www.npmjs.com/package/helmet) works and how you can easily improve the security of your [express](https://www.npmjs.com/package/express) applications. A HTTPS setup for this project might be included in the future.
+Take a look at the articles [here](http://scottksmith.com/blog/2014/09/21/protect-your-node-apps-noggin-with-helmet/) and [here](http://scottksmith.com/blog/2014/09/04/simple-steps-to-secure-your-express-node-application/) to get a better idea of how [helmet](https://www.npmjs.com/package/helmet) works and how you can easily improve the security of your [express](https://www.npmjs.com/package/express) applications.
 
 The frontend of this seed is primarily based on this [style guide](https://github.com/johnpapa/angular-styleguide) which you should absolutely read if you are planning to write a lot of [angular](https://www.npmjs.com/package/angular) code. For client-side routing this project uses [angular-ui-router](https://www.npmjs.com/package/angular-ui-router). The recently added [angular-material](https://www.npmjs.com/package/angular-material) will make this app beautiful. However these are only recommendations feel free to include any alternatives you might prefer.
 
@@ -45,7 +45,7 @@ This basically allows you to simply write code while your web app updates itself
 ```js
 gulp.task('browser-sync', ['nodemon'], function() {
     var port = process.env.PORT || '3000';
-    return browserSync.init({
+    browserSync.init({
         ui: false,
         files: paths.build,
         proxy: 'localhost:' + port,
