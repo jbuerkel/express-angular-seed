@@ -1,34 +1,104 @@
 'use strict';
 
 var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
-var path = require('path');
-var paths = require('./paths.conf');
-var Server = require('karma').Server;
 var $ = require('gulp-load-plugins')();
 
-function lint(src) {
-    return gulp.src(src)
+var browserSync = require('browser-sync').create();
+var resolve = require('app-root-path').resolve;
+var Server = require('karma').Server;
+
+gulp.task('test', function(done) {
+    new Server({
+        configFile: resolve('./karma.conf.js')
+    }, done).start();
+});
+
+gulp.task('lint', ['lint.client', 'lint.server']);
+
+gulp.task('lint.client', function() {
+    return gulp.src('./client/**/*.js')
         .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish'))
-        .pipe($.jshint.reporter('fail'));
-}
+        .pipe($.jshint.reporter('jshint-stylish'));
+});
 
-function minifyHTML(src, dest) {
-    return gulp.src(src)
+gulp.task('lint.server', function() {
+    return gulp.src('./server/**/@(*.js|www)')
+        .pipe($.jshint())
+        .pipe($.jshint.reporter('jshint-stylish'));
+});
+
+gulp.task('dist', ['dist.css', 'dist.html', 'dist.img', 'dist.js', 'dist.vendor']);
+
+gulp.task('dist.css', function() {
+    return gulp.src('./client/**/*.css')
+        .pipe($.sourcemaps.init())
+            .pipe($.concat('app.min.css'))
+            .pipe($.autoprefixer())
+            .pipe($.cssnano())
+        .pipe($.sourcemaps.write('.'))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('dist.html', ['dist.html.index', 'dist.html.views']);
+
+gulp.task('dist.html.index', function() {
+    return gulp.src('./client/index.html')
+        .pipe($.htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('dist.html.views', function() {
+    return gulp.src('./client/**/!(index).html')
         .pipe($.flatten())
-        .pipe($.changed(dest))
-        .pipe($.htmlmin({ collapseWhitespace: true }))
-        .pipe(gulp.dest(dest));
-}
+        .pipe($.htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest('./dist/views'));
+});
 
-gulp.task('browser-sync', ['nodemon'], function() {
-    var port = process.env.PORT || '3000';
+gulp.task('dist.img', function() {
+    return gulp.src('./client/**/*.@(png|jpg|gif|svg|ico)')
+        .pipe($.flatten())
+        .pipe($.imagemin())
+        .pipe(gulp.dest('./dist/img'));
+});
+
+gulp.task('dist.js', function() {
+    return gulp.src(['./client/**/*.module.js', './client/**/!(*.spec).js'])
+        .pipe($.sourcemaps.init())
+            .pipe($.concat('app.min.js'))
+            .pipe($.ngAnnotate())
+            .pipe($.uglify())
+        .pipe($.sourcemaps.write('.'))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('dist.vendor', function() {
+    return gulp.src([
+        './node_modules/angular-material/angular-material.min.css',
+
+        './node_modules/angular/angular.min.@(js|js.map)',
+        './node_modules/angular-aria/angular-aria.min.@(js|js.map)',
+        './node_modules/angular-animate/angular-animate.min.@(js|js.map)',
+        './node_modules/angular-material/angular-material.min.js',
+        './node_modules/angular-ui-router/release/angular-ui-router.min.js'
+    ], {base: './node_modules'})
+        .pipe(gulp.dest('./dist/vendor'));
+});
+
+gulp.task('dev', ['dev.client'], function() {
+    gulp.watch('./client/**/*.css', ['dist.css']);
+    gulp.watch('./client/index.html', ['dist.html.index']);
+    gulp.watch('./client/**/!(index).html', ['dist.html.views']);
+    gulp.watch('./client/**/*.@(png|jpg|gif|svg|ico)', ['dist.img']);
+    gulp.watch('./client/**/!(*.spec).js', ['dist.js']);
+});
+
+gulp.task('dev.client', ['dev.server'], function() {
+    var port = process.env.PORT || 3000;
     browserSync.init({
         ui: false,
-        files: paths.build,
+        files: './dist',
         proxy: 'localhost:' + port,
-        port: '4000',
+        port: port + 1,
         online: false,
         notify: false,
         reloadDelay: 500,
@@ -36,74 +106,12 @@ gulp.task('browser-sync', ['nodemon'], function() {
     });
 });
 
-gulp.task('lint-client', function() {
-    return lint(paths.clientjs);
-});
-
-gulp.task('lint-server', function() {
-    return lint(paths.serverjs);
-});
-
-gulp.task('minify-css', function() {
-    return gulp.src(paths.css)
-        .pipe($.concat('app.min.css'))
-        .pipe($.autoprefixer('last 3 versions'))
-        .pipe($.cssnano())
-        .pipe(gulp.dest(paths.build));
-});
-
-gulp.task('minify-html-index', function() {
-    return minifyHTML(paths.htmlindex, paths.build);
-});
-
-gulp.task('minify-html-views', function() {
-    return minifyHTML(paths.htmlviews, paths.buildviews);
-});
-
-gulp.task('minify-img', function() {
-    return gulp.src(paths.img)
-        .pipe($.changed(paths.buildimg))
-        .pipe($.imagemin())
-        .pipe(gulp.dest(paths.buildimg));
-});
-
-gulp.task('minify-js', ['lint-client'], function() {
-    return gulp.src([paths.clientjsmodule, paths.clientjs, paths.clientjsnotest])
-        .pipe($.sourcemaps.init())
-            .pipe($.concat('app.min.js'))
-            .pipe($.ngAnnotate())
-            .pipe($.stripDebug())
-            .pipe($.uglify())
-        .pipe($.sourcemaps.write('.'))
-        .pipe(gulp.dest(paths.build));
-});
-
-gulp.task('nodemon', ['lint-server', 'minify-css', 'minify-html-index', 'minify-html-views', 'minify-img', 'minify-js', 'nsp'], function() {
+gulp.task('dev.server', ['dist'], function() {
     $.nodemon({
-        script: paths.serverscript,
-        watch: path.join(__dirname, paths.serverjs),
-        env: { 'NODE_ENV': 'development' },
-        tasks: ['lint-server']
+        script: './server/bin/www',
+        watch: resolve('./server/**/@(*.js|www)'),
+        env: { 'NODE_ENV': 'development' }
     }).on('restart', browserSync.reload);
 });
 
-gulp.task('nsp', function(done) {
-    $.nsp({
-        package: path.join(__dirname, paths.packagejson)
-    }, done);
-});
-
-gulp.task('test', function(done) {
-    new Server({
-        configFile: path.join(__dirname, paths.karmaconf)
-    }, done).start();
-});
-
-gulp.task('default', ['browser-sync'], function() {
-    gulp.watch(paths.css, ['minify-css']);
-    gulp.watch(paths.htmlindex, ['minify-html-index']);
-    gulp.watch(paths.htmlviews, ['minify-html-views']);
-    gulp.watch(paths.img, ['minify-img']);
-    gulp.watch(paths.clientjs, ['minify-js']);
-    gulp.watch(paths.packagejson, ['nsp']);
-});
+gulp.task('default', ['dev']);

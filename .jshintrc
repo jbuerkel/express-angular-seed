@@ -1,0 +1,19 @@
+{
+  "curly": true,
+  "eqeqeq": true,
+  "esversion": 5,
+  "globals": {
+    "angular": false
+  },
+  "latedef": "nofunc",
+  "noarg": true,
+  "shadow": "outer",
+  "strict": "global",
+  "undef": true,
+  "unused": "vars",
+
+  "eqnull": true,
+
+  "browser": true,
+  "node": true
+}
