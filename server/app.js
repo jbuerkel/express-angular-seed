@@ -1,19 +1,17 @@
-/* jshint node: true */
 'use strict';
 
 var express = require('express');
-var path = require('path');
 var helmet = require('helmet');
 var logger = require('morgan');
-var paths = require('../paths.conf');
+var resolve = require('app-root-path').resolve;
 
-var core = require('./core/router');
+var core = require('./routes/core');
 
 var app = express();
 
 app.use(helmet());
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, '..', paths.build)));
+app.use(express.static(resolve('./dist'), {index: false}));
 
 app.use(core);
 
