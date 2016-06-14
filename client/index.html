@@ -1,26 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="app" ng-controller="CoreController as core">
     <head>
+        <base href="/">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta name="description" content="A slim sample web app powered by Express and Angular">
 
-        <title>express-angular-seed</title>
+        <title ng-bind="core.title"></title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css">
+        <link rel="stylesheet" href="vendor/angular-material/angular-material.min.css">
         <link rel="stylesheet" href="app.min.css">
     </head>
-    <body ng-controller="CoreController as core" ng-cloak>
-        <md-toolbar>
+    <body layout="column" ng-cloak>
+        <md-toolbar class="md-whiteframe-z1">
             <div class="md-toolbar-tools">
                 <md-button class="md-icon-button" aria-label="Menu">
                     <md-icon md-svg-icon="menu"></md-icon>
                 </md-button>
-                <h2>
-                    <span>{{core.title}}</span>
-                </h2>
+                <h2>{{core.title}}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" aria-label="Feedback">
                     <md-icon md-svg-icon="feedback"></md-icon>
@@ -28,12 +27,15 @@
             </div>
         </md-toolbar>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-aria.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-messages.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+        <md-content layout-padding>
+            <div ui-view></div>
+        </md-content>
+
+        <script src="vendor/angular/angular.min.js"></script>
+        <script src="vendor/angular-aria/angular-aria.min.js"></script>
+        <script src="vendor/angular-animate/angular-animate.min.js"></script>
+        <script src="vendor/angular-material/angular-material.min.js"></script>
+        <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="app.min.js"></script>
     </body>
 </html>

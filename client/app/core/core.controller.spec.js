@@ -1,20 +1,18 @@
-/* jshint expr: true */
-(function() {
-    'use strict';
+'use strict';
 
-    describe('core controller', function() {
-        var controller;
-        beforeEach(function() {
-            module('app.core');
+describe('CoreController', function() {
+    var controller;
 
-            inject(function($controller) {
-                controller = $controller('CoreController');
-            });
-        });
+    beforeEach(function() {
+        module('app.core');
 
-        it('should provide a title property containing the string "express-angular-seed"', function() {
-            expect(controller.title).to.exist;
-            expect(controller.title).to.equal('express-angular-seed');
+        inject(function($controller) {
+            controller = $controller('CoreController');
         });
     });
-})();
+
+    it('should provide a title property containing the string "express-angular-seed"', function() {
+        expect(controller.title).to.exist;
+        expect(controller.title).to.equal('express-angular-seed');
+    });
+});

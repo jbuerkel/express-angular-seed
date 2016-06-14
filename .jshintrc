@@ -3,7 +3,9 @@
   "eqeqeq": true,
   "esversion": 5,
   "globals": {
-    "angular": false
+    "angular": false,
+    "expect": false,
+    "inject": false
   },
   "latedef": "nofunc",
   "noarg": true,
@@ -13,7 +15,9 @@
   "unused": "vars",
 
   "eqnull": true,
+  "expr": true,
 
   "browser": true,
+  "mocha": true,
   "node": true
 }

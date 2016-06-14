@@ -12,6 +12,12 @@
     function CoreController() {
         var vm = this;
 
-        vm.title = 'express-angular-seed';
+        vm.title = undefined;
+
+        activate();
+
+        function activate() {
+            vm.title = 'express-angular-seed';
+        }
     }
 })();
