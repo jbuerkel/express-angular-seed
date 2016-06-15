@@ -10,7 +10,13 @@ var Server = require('karma').Server;
 gulp.task('test', function(done) {
     new Server({
         configFile: resolve('./karma.conf.js')
-    }, done).start();
+    }, function(status) {
+        if (status) {
+            process.exit(1);
+        }
+
+        done();
+    }).start();
 });
 
 gulp.task('lint', ['lint.client', 'lint.server']);
