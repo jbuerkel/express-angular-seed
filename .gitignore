@@ -1,4 +1,5 @@
-.idea/
-bower_components/
-build/
-node_modules/
+/.idea/
+/cert/
+/dist/
+/node_modules/
+/npm-debug.log

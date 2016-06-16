@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+'use strict';
+
+var app = require('../app');
+var appHttp = require('express')();
+var debug = require('debug')('express-angular-seed:server');
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
+var resolve = require('app-root-path').resolve;
+
+var port = process.env.PORT || 3000;
+var portHttp = 4000;
+
+var options = {
+    cert: fs.readFileSync(resolve('./cert/cert.pem')),
+    key: fs.readFileSync(resolve('./cert/key.pem'))
+};
+
+app.set('port', port);
+appHttp.set('port', portHttp);
+appHttp.get('*', function(req, res) {
+    res.redirect(301, 'https://' + req.hostname + ':' + port + req.url);
+});
+
+var server = https.createServer(options, app);
+var serverHttp = http.createServer(appHttp);
+
+server.listen(port);
+server.on('error', function(error) { onError(error, true); });
+server.on('listening', function() { onListening(true); });
+
+serverHttp.listen(portHttp);
+serverHttp.on('error', function(error) { onError(error, false); });
+serverHttp.on('listening', function() { onListening(false); });
+
+function onError(error, secure) {
+    var usedPort = secure ? port : portHttp;
+    var usedProtocol = secure ? 'HTTPS' : 'HTTP';
+
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+
+    switch (error.code) {
+        case 'EACCES':
+            console.error(usedProtocol + ' port ' + usedPort + ' requires elevated privileges');
+            process.exit(1);
+            break;
+
+        case 'EADDRINUSE':
+            console.error(usedProtocol + ' port ' + usedPort + ' is already in use');
+            process.exit(1);
+            break;
+
+        default:
+            throw error;
+    }
+}
+
+function onListening(secure) {
+    var usedPort = secure ? port : portHttp;
+    var usedProtocol = secure ? 'HTTPS' : 'HTTP';
+
+    debug(usedProtocol + ' server listening on port ' + usedPort);
+}
