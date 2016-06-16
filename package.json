@@ -4,12 +4,15 @@
   "description": "A slim sample web app powered by Express and Angular",
   "author": "Jonas Bürkel <buerkelj@gmail.com>",
   "scripts": {
+    "cert": "bash ./cert.sh",
     "dev": "gulp dev",
     "dist": "rimraf ./dist/ && gulp dist",
     "gulp": "gulp",
+    "http": "node ./server/bin/http",
+    "https": "node ./server/bin/https",
     "lint": "gulp lint",
     "postinstall": "npm prune && npm run dist",
-    "start": "node ./server/bin/www",
+    "start": "npm run http",
     "test": "gulp test"
   },
   "repository": {
