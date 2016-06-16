@@ -28,7 +28,7 @@ gulp.task('lint.client', function() {
 });
 
 gulp.task('lint.server', function() {
-    return gulp.src('./server/**/@(*.js|www)')
+    return gulp.src('./server/**/@(*.js|http|https)')
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish'));
 });
@@ -114,8 +114,8 @@ gulp.task('dev.client', ['dev.server'], function() {
 
 gulp.task('dev.server', ['dist'], function() {
     $.nodemon({
-        script: './server/bin/www',
-        watch: resolve('./server/**/@(*.js|www)'),
+        script: './server/bin/http',
+        watch: resolve('./server/**/@(*.js|http|https)'),
         env: { 'NODE_ENV': 'development' }
     }).on('restart', browserSync.reload);
 });
