@@ -9,6 +9,15 @@
 
 -->
 
+<a name="0.3.1"></a>
+# 0.3.1 gzip-update (2016-07-13)
+
+## Features
+
+- Added [compression](https://www.npmjs.com/package/compression)
+- Removed [morgan](https://www.npmjs.com/package/morgan) in production mode
+- Updated dependencies
+
 <a name="0.3.0"></a>
 # 0.3.0 run-secure (2016-06-16)
 
@@ -39,7 +48,7 @@
 
 ## Features
 
-- Added [npm](https://www.npmjs.com/) script to update application dependencies
+- Added npm script to update application dependencies
 - Added full [angular-material](https://www.npmjs.com/package/angular-material) setup replacing [angular-ui-bootstrap](https://www.npmjs.com/package/angular-ui-bootstrap)
 - Changed minify-js task to store source maps separately
 - Changed parts of backend and frontend source code

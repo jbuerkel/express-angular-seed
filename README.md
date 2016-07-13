@@ -18,7 +18,7 @@ After the installation launch the application with `npm start`. If you would lik
 
 The following npm scripts are provided to make things easier:
 - `npm run cert`: Generates a self-signed SSL certificate which can be used for the HTTPS setup.
-- `npm run dev`: Launches the application in development mode. This includes file watches as well as automated building and restarting/reloading.
+- `npm run dev`: Launches the application in development mode. This includes file watchers as well as automated building and restarting/reloading.
 - `npm run dist`: Runs the application's build process.
 - `npm run lint`: Lints the application's source code.
 - `npm test`: Runs the application's tests.
