@@ -9,6 +9,13 @@
 
 -->
 
+<a name="0.3.2"></a>
+# 0.3.2 deps-only (2017-02-19)
+
+## Features
+
+- Updated dependencies
+
 <a name="0.3.1"></a>
 # 0.3.1 gzip-update (2016-07-13)
 
