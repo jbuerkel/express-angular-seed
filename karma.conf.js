@@ -10,8 +10,8 @@ module.exports = function(config) {
             './node_modules/angular-mocks/angular-mocks.js',
             './node_modules/angular-material/angular-material-mocks.js',
             './node_modules/angular-ui-router/release/angular-ui-router.js',
-            './client/**/*.module.js',
-            './client/**/*.js'
+            './src/client/**/*.module.js',
+            './src/client/**/*.js'
         ],
         frameworks: ['mocha', 'sinon-chai'],
         singleRun: true

@@ -1,23 +1,19 @@
-<!--
-
-<a name="0.0.0"></a>
-# 0.0.0 version-name (0000-00-00)
-
-## Bug Fixes
+<a name="0.3.3"></a>
+# [0.3.3](https://github.com/jbuerkel/express-angular-seed/compare/v0.3.2...0.3.3) (2017-02-25)
 
 ## Features
 
--->
+- Updated project
 
 <a name="0.3.2"></a>
-# 0.3.2 deps-only (2017-02-19)
+# 0.3.2 (2017-02-19)
 
 ## Features
 
 - Updated dependencies
 
 <a name="0.3.1"></a>
-# 0.3.1 gzip-update (2016-07-13)
+# 0.3.1 (2016-07-13)
 
 ## Features
 
@@ -26,7 +22,7 @@
 - Updated dependencies
 
 <a name="0.3.0"></a>
-# 0.3.0 run-secure (2016-06-16)
+# 0.3.0 (2016-06-16)
 
 ## Bug Fixes
 
@@ -39,7 +35,7 @@
 - Updated dependencies
 
 <a name="0.2.1"></a>
-# 0.2.1 load-plugins (2016-02-29)
+# 0.2.1 (2016-02-29)
 
 ## Features
 
@@ -47,7 +43,7 @@
 - Updated dependencies
 
 <a name="0.2.0"></a>
-# 0.2.0 angular-material (2016-02-05)
+# 0.2.0 (2016-02-05)
 
 ## Bug Fixes
 
@@ -62,7 +58,7 @@
 - Updated dependencies
 
 <a name="0.1.2"></a>
-# 0.1.2 test-runner (2016-01-27)
+# 0.1.2 (2016-01-27)
 
 ## Bug Fixes
 

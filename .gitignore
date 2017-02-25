@@ -1,5 +1,5 @@
-/.idea/
-/cert/
-/dist/
-/node_modules/
-/npm-debug.log
+.idea/
+cert/
+dist/
+node_modules/
+npm-debug.log

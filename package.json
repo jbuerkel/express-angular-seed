@@ -1,12 +1,12 @@
 {
   "name": "express-angular-seed",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A slim sample web app powered by Express and Angular",
   "author": "Jonas Bürkel <buerkelj@gmail.com>",
   "scripts": {
-    "cert": "bash ./cert.sh",
+    "cert": "./cert.sh",
     "dev": "gulp dev",
-    "dist": "rimraf ./dist/ && gulp dist",
+    "dist": "rimraf dist/ && gulp dist",
     "gulp": "gulp",
     "http": "node ./server/bin/http",
     "https": "node ./server/bin/https",
