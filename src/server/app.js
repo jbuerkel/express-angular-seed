@@ -15,7 +15,7 @@ app.use(helmet());
 if (app.get('env') !== 'production') {
     app.use(morgan('dev'));
 }
-app.use(express.static(resolve('./dist'), {index: false}));
+app.use(express.static(resolve('./dist/client'), {index: false}));
 
 app.use(core);
 

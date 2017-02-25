@@ -12,8 +12,6 @@
     function CoreController() {
         var vm = this;
 
-        vm.title = undefined;
-
         activate();
 
         function activate() {
